@@ -1,1 +1,4 @@
 contains functions that reads required test from txt file
+with an example main function at read_from_file.cpp
+important note: 1- you have to stick to the given file format
+                2- first line have at most 2 entries while others have only one entry
