@@ -1,46 +1,51 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include"header.h"
-int main()
+#include"header.h" 
+void open (ifstream &infile)
 {
-	ifstream infile;
-	string path;
-	char choice;
-	cout<<"please enter input file path Or just write \"d\" to use the default file \n ";
-	cin>>path;
-	if(path=="d")
-	{
 		infile.open("default.txt");
 
-	}
-	else
-		infile.open(path.c_str());
 			if(infile.fail())
 			{
 				cout<<"Error opening the file \n";
-				return 1;
+				
 			}
-			else
-			{
-				cout<<"enter 1 for degree Or 2 for closeness or 3 for betweenes or 4 for all three\n ";
+}
+int main()
+{
+	ifstream infile;
+	char choice;
+
+				do
+				{
+				cout<<"enter 1 for degree Or 2 for closeness or 3 for betweenes or e for exit \n ";
 				cin>>choice;
 				switch (choice)
 				{
 				case '1':
+					open(infile);
 					cout<<"Degree Centrality :\n";
 					deg_cent(infile);
+					infile.close();
 					break;
 				case '2':
+					open (infile);
 					cout<<"closeness Centrality :\n";
 					clos_cent(infile);
+					infile.close();
+					break;
+				case'3':
 					break;
 				default:
+					choice='e';
 					break;
+				
 				}
-				infile.close();
-			}
-			system("pause");
+				}while (choice !='e');
+				
+			
+			
 
 	return 0;
 }
